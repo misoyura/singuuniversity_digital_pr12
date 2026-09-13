@@ -39,4 +39,20 @@ const SESSIONS = [
       { href: "#wrap", label: "마무리" },
     ],
   },
+  {
+    id: 3,
+    navLabel: "2차시 - new버전",
+    title: "AI로 만드는 나의 자기 PR 영상 (모바일 버전)",
+    subtitle: "모바일 Google Flow + CapCut으로 완성하는 25~35초 자기 PR 영상",
+    desc: "내 사진으로 ChatGPT AI 캐릭터 만들기부터 모바일 Google Flow로 영상 2개 제작, CapCut으로 25~35초 자기 PR 영상 완성까지 — 90~100분 모바일 실습 버전.",
+    href: "session_3.html",
+    anchors: [
+      { href: "#flow", label: "오늘의 흐름" },
+      { href: "#intro", label: "도입·1차시 연결" },
+      { href: "#chatgpt", label: "AI 캐릭터" },
+      { href: "#googleflow", label: "Flow 실습" },
+      { href: "#capcut", label: "CapCut 실습" },
+      { href: "#wrap", label: "마무리" },
+    ],
+  },
 ];

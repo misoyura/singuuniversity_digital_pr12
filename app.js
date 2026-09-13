@@ -24,7 +24,7 @@ function renderNav(currentId){
   if (!nav) return;
 
   const tabs = SESSIONS.map(s =>
-    `<a class="nav-btn${s.id === currentId ? ' active' : ''}" href="${s.href}">${s.id}차시</a>`
+    `<a class="nav-btn${s.id === currentId ? ' active' : ''}" href="${s.href}">${s.navLabel || (s.id + '차시')}</a>`
   ).join('\n      ');
 
   const current = SESSIONS.find(s => s.id === currentId);
@@ -53,7 +53,7 @@ function renderSessionGrid(){
 
   const cards = SESSIONS.map(s => `
     <a class="session-card" href="${s.href}">
-      <span class="badge">${s.id}차시</span>
+      <span class="badge">${s.navLabel || (s.id + '차시')}</span>
       <h3>${s.title}</h3>
       <p class="desc">${s.desc}</p>
       <span class="go">강의안 보기</span>
@@ -74,15 +74,18 @@ function renderSessionGrid(){
 function initSessionPage(currentId){
   document.querySelectorAll('.logo').forEach(el => el.textContent = COURSE.name);
 
+  const current = SESSIONS.find(s => s.id === currentId);
+  const label = current ? (current.navLabel || (current.id + '차시')) : `${currentId}차시`;
+
   const eyebrow = document.querySelector('.eyebrow');
-  if (eyebrow) eyebrow.textContent = `${currentId}차시 · 강사 ${COURSE.instructor}`;
+  if (eyebrow) eyebrow.textContent = `${label} · 강사 ${COURSE.instructor}`;
 
   renderNav(currentId);
 
   const footer = document.getElementById('site-footer');
   if (footer) footer.innerHTML = `
     <div class="wrap">
-      <strong>${COURSE.name}</strong> · ${currentId}차시 강의안 &nbsp;|&nbsp; 강사 ${COURSE.instructor} &nbsp;|&nbsp; © ${COURSE.year}
+      <strong>${COURSE.name}</strong> · ${label} 강의안 &nbsp;|&nbsp; 강사 ${COURSE.instructor} &nbsp;|&nbsp; © ${COURSE.year}
     </div>`;
 }
 
